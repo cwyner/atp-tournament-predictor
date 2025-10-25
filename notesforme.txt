@@ -1,0 +1,52 @@
+Here is a mock-up workflow of how this project should go and what I want it to do:
+
+############################################################################################################
+1: Create scraping scripts to take data from ATP Tour website.
+
+They provide very detailed data for three important categories:
+- Serving
+- Returning
+- Under Pressure
+
+Also gather some data about match outcomes, rankings, H2H?
+
+I also want to have separarate stats for surface type (clay vs. grass vs. hard-court) since this is very important for players.
+
+############################################################################################################
+2: I want the model to combine the individual player statistics along with their match results to find out which stats mean the most.
+This will also help us determine which players are the best.
+
+This part is the training bit, I suppose. This part will probably require the most research on how to do.
+Will likely use PyTorch or something to do this part.
+
+############################################################################################################
+3: My ultimate goal is to simulate a bracket. If I have the matchups as inputs, I need to make sure the model understands such an input and
+can use it to output a winner.
+
+Here is where the mismatch is in my mind:
+
+Training fields (with supervision):
+Serve Rating    1st Serve %     1st Serve pts won   2nd Serve pts won   ... ... (now match statistics)  Opponent    Result
+
+Testing fields
+Player1     Player2     Result
+
+I will need to do a lot of thinking on how these pieces fit together in my head.
+Preliminary thinking at a high level: 
+
+The player data on its own doesn't mean much. I need to compare a player's serve rating to how many wins they have, return rating
+to how many wins they have, etc. Then, maybe I can redesign the fields to look more like this:
+
+Serve Rating Player 1    1st Serve % Player 1   ... Serve Rating Player 2    1st Serve % Player 2   ... Result
+
+I think this makes much more sense. This way we are representing a matchup between opponents as a matchup between their stats.
+The model knowns nothing else about the players other than their stats. It determines how much each stat contributes to winning, then
+compares the two "players" stats.
+
+############################################################################################################
+4: (Optional but I want to do it) After the model is complete, I want to host a website that visualizes a tournament simulation
+
+It doesn't have to look super pretty but it would make this a nice, presentable project that combines several facets of software development.
+Maybe I can even spin up a database, store results, etc.
+
+############################################################################################################
