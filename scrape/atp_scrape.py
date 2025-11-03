@@ -32,7 +32,8 @@ while True:
         break
 
 # Parse the rendered html content
-soup = BeautifulSoup(driver.page_source, 'html.parser')
+html_content = driver.page_source
+soup = BeautifulSoup(html_content, 'html.parser')
 
 # Find the leaderboard's table
 tables = soup.find_all('table')
