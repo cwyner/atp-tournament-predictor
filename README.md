@@ -4,7 +4,7 @@ ATP tournament predictor
 
 # Setup: Python Environment + Dependencies
 
-If you'd like to use this project for yourself, these instructions will help you create a clean Python environment and install the required dependencies.
+If you'd like to reproduce this project for yourself, these instructions will help you create a clean Python environment and install the required dependencies.
 
 ## Prerequisites
 
